@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms.Platform.Android;
 
 namespace MyApp.Droid
 {
@@ -20,6 +21,8 @@ namespace MyApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Window.AddFlags(WindowManagerFlags.TranslucentNavigation);
+            SetStatusBarColor(Android.Graphics.Color.Transparent);
             LoadApplication(new App());
         }
     }
