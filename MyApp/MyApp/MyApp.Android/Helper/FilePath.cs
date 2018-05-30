@@ -18,5 +18,10 @@ namespace MyApp.Droid.Helper
 {
     public class FilePath : IGetPath
     {
+        public string getPath()
+        {
+            var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            return System.IO.Path.Combine(path, "MyApp.db3");
+        }
     }
 }
