@@ -20,6 +20,7 @@ namespace MyApp.DbContext
                 var path = DependencyService.Get<IGetPath>().getPath();
                 _connection = new SQLiteConnection(path,true);
                 _connection.CreateTable<LoginTable>();
+                _connection.CreateTable<Doctor>();
             }
             catch (Exception e)
             {
