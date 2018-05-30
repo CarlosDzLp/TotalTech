@@ -6,6 +6,6 @@ namespace MyApp.Helper
 {
     public interface IGetPath
     {
-        void getPath();
+        string getPath();
     }
 }
