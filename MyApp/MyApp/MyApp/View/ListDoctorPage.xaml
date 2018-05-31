@@ -57,7 +57,6 @@
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout
-                                        BackgroundColor="Red"
                                         Grid.Row="0"
                                         Grid.Column="1">
                                         <Label
@@ -67,7 +66,6 @@
                                             Text="{Binding name}"/>
                                     </StackLayout>
                                     <StackLayout 
-                                        BackgroundColor="Aqua"
                                         Grid.Row="1"
                                         Grid.Column="1">
                                         <Label
@@ -76,7 +74,6 @@
                                             Text="{Binding email}"/>
                                     </StackLayout>
                                     <StackLayout 
-                                        BackgroundColor="Green"
                                         Grid.Row="2"
                                         Grid.Column="1">
                                         <StackLayout
