@@ -17,10 +17,10 @@ namespace MyApp.ViewModel
             Itemselected = new Command(ItemSelectedClick);
         }
 
-        private INavigation navigation;
+        
         private void ItemSelectedClick()
         {
-            navigation.PushAsync(new DetailDoctorPage());
+            App.Current.MainPage.Navigation.PushAsync(new DetailDoctorPage());
         }
 
         private async void DoLogOut()

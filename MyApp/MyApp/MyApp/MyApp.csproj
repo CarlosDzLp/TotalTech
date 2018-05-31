@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Behaviors\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="View\DetailDoctorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

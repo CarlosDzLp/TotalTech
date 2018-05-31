@@ -5,6 +5,7 @@
              xmlns:renderer="clr-namespace:MyApp.renderer;assembly=MyApp"
              x:Class="MyApp.View.ListDoctorPage"
              BackgroundColor="#F7F8F8"
+             xmlns:behaviors="clr-namespace:MyApp.Behaviors"
              Title="Lista doctores">
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -17,6 +18,7 @@
     <ContentPage.Content>
         <StackLayout>
             <ListView
+                behaviors:ItemtappedAttached.Command="{Binding Itemselected}"
                 CachingStrategy="RecycleElement"
                 Margin="0,20,0,0"
                 SeparatorColor="#F7F8F8"
