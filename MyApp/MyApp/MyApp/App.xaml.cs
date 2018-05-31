@@ -1,7 +1,11 @@
 using System;
+using System.Threading.Tasks;
 using MyApp.DbContext;
+using MyApp.Entities;
 using MyApp.Helper;
+using MyApp.Services;
 using MyApp.View;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,10 +14,11 @@ namespace MyApp
 {
 	public partial class App : Application
 	{
+	    DbMyApp db = new DbMyApp();
 	    public App()
 	    {
 	        InitializeComponent();
-	        DbMyApp db = new DbMyApp();
+	        getApiService();        
 	        var result = db.getLogin();
 	        if (result > 0)
 	        {
@@ -24,7 +29,37 @@ namespace MyApp
 	            MainPage = new View.LoginPage();
 	        }
 	    }
-
+	    private void getApiService()
+	    {
+	        Task.Run(() =>
+	        {
+	            if (CrossConnectivity.Current.IsConnected)
+	            {
+	                if (db.Getcountdoctor().Result == 0)
+                    {
+                        ApiService service = new ApiService();
+                        var resultado = service.getService();
+                        if (resultado.Result != null)
+                        {
+                            foreach (var item in resultado.Result.results)
+                            {
+                                Doctor doctor = new Doctor();
+                                doctor.image = item.picture.large;
+                                doctor.name = item.name.first +" "+ item.name.last;
+                                doctor.email = item.email;
+                                doctor.street = item.location.street;
+                                doctor.state = item.location.state;
+                                doctor.city = item.location.city;
+                                doctor.postcode = item.location.postcode;
+                                doctor.phone = item.phone;
+                                doctor.ranking = Ranking.getRanking().ToString();
+                                db.Insertdoctor(doctor);
+                            }
+                        }
+                    }
+                }
+            });
+        }
 	    public static Page getNavigation(Page page)
 	    {
 	        var result = new NavigationPage(page);

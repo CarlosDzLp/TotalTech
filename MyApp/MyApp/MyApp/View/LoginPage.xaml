@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:renderer="clr-namespace:MyApp.renderer;assembly=MyApp"
+             xmlns:behaviors="clr-namespace:MyApp.Behaviors;assembly=MyApp"
              x:Class="MyApp.View.LoginPage"
              BackgroundImage="bg_login.png">
     <ContentPage.Content>
@@ -45,7 +46,12 @@
                         TextColor="White"
                         Placeholder="Email Address"
                         PlaceholderColor="Gray"
-                        Text="{Binding login.Email}"/>
+                        Text="{Binding login.Email}">
+                        <renderer:CustomEntry.Behaviors>
+                            <behaviors:EmailValidatorBehavior/>
+                            <behaviors:MaxLengthValidator MaxLength="15"/>
+                        </renderer:CustomEntry.Behaviors>
+                    </renderer:CustomEntry>
                     <StackLayout
                         VerticalOptions="Center"
                         Grid.Column="0"
@@ -65,12 +71,16 @@
                         IsPassword="True"
                         TextColor="White"
                         PlaceholderColor="Gray"
-                        Text="{Binding login.Password}"/>
+                        Text="{Binding login.Password}">
+                        <renderer:CustomEntry.Behaviors>
+                            <behaviors:MaxLengthValidator MaxLength="15"/>
+                        </renderer:CustomEntry.Behaviors>
+                        </renderer:CustomEntry>
                 </Grid>
                 <Button
                     CornerRadius="20"
                     Margin="0,30,0,0"
-                    TextColor="Transparent"
+                    TextColor="Green"
                     Text="Login"
                     BackgroundColor="White"
                     Command="{Binding DoLogin}"/>

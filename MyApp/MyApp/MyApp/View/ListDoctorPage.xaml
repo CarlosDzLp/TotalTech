@@ -20,9 +20,10 @@
             <ListView
                 behaviors:ItemtappedAttached.Command="{Binding Itemselected}"
                 CachingStrategy="RecycleElement"
-                Margin="0,20,0,0"
+                Margin="0,20,0,20"
                 SeparatorColor="#F7F8F8"
-                x:Name="ListMen"
+                SelectedItem="{Binding ItemCollection}"
+                ItemsSource="{Binding collectiondoctor,Mode=OneWay}"
                 HasUnevenRows="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -41,9 +42,9 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout
                                         Grid.Column="0"
@@ -52,27 +53,30 @@
                                         <StackLayout
                                             VerticalOptions="CenterAndExpand">
                                             <abstractions:CircleImage
-                                                Source="{Binding url}"/>
+                                                Source="{Binding image}"/>
                                         </StackLayout>
                                     </StackLayout>
-                                    <StackLayout 
+                                    <StackLayout
+                                        BackgroundColor="Red"
                                         Grid.Row="0"
                                         Grid.Column="1">
                                         <Label
                                             VerticalTextAlignment="Center"
                                             FontAttributes="Bold"
                                             TextColor="#11434C"
-                                            Text="{Binding nombre}"/>
+                                            Text="{Binding name}"/>
                                     </StackLayout>
                                     <StackLayout 
+                                        BackgroundColor="Aqua"
                                         Grid.Row="1"
                                         Grid.Column="1">
                                         <Label
                                             VerticalTextAlignment="Center"
                                             TextColor="#00DC4A"
-                                            Text="{Binding correo}"/>
+                                            Text="{Binding email}"/>
                                     </StackLayout>
                                     <StackLayout 
+                                        BackgroundColor="Green"
                                         Grid.Row="2"
                                         Grid.Column="1">
                                         <StackLayout
@@ -83,7 +87,7 @@
                                                 Source="location_icon.png"/>
                                             <Label
                                                 TextColor="Black"
-                                                Text="{Binding direccion}"/>
+                                                Text="{Binding street}"/>
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout
@@ -98,8 +102,8 @@
                                                 Source="star_icon.png"/>
                                             <Label
                                                 VerticalTextAlignment="Center"
-                                                Text="{Binding estrella}"
-                                                TextColor="Black"></Label>
+                                                Text="{Binding ranking}"
+                                                TextColor="#11434C"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </Grid>

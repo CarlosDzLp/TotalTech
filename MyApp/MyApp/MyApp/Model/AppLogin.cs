@@ -7,39 +7,21 @@ using MyApp.Annotations;
 
 namespace MyApp.Model
 {
-    public class AppLogin : INotifyPropertyChanged
+    public class AppLogin : BaseModel
     {
         private string _email;
         private string _password;
 
         public string Email
         {
-            get => _email;
-            set
-            {
-                if (value == _email) return;
-                _email = value;
-                OnPropertyChanged();
-            }
+            get { return _email; }
+            set { SetValue(ref _email, value); }
         }
 
         public string Password
         {
-            get => _password;
-            set
-            {
-                if (value == _password) return;
-                _password = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get { return _password; }
+            set { SetValue(ref _password, value); }
         }
     }
 }

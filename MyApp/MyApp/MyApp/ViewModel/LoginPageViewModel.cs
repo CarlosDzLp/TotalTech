@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MyApp.DbContext;
+using MyApp.Helper;
 using MyApp.Model;
 using MyApp.View;
 using Xamarin.Forms;
@@ -14,35 +15,43 @@ namespace MyApp.ViewModel
         public Command DoLogin { get; set; }
         public LoginPageViewModel()
         {
-            DoLogin = new Command(DoLoginoperation);
             login = new AppLogin();
+            login.Email = "@";
+            DoLogin = new Command(DoLoginoperation);         
         }
 
-        private void DoLoginoperation()
+        private async void DoLoginoperation()
         {
             if (login.Email != null)
             {
-                if (login.Password != null)
+                if (validateEmail.EntryValidateEmail(login.Email))
                 {
-                    DbMyApp db = new DbMyApp();
-                    var result = db.insertLogin();
-                    if (result.Result > 0)
+                    if (login.Password != null)
                     {
-                        App.Current.MainPage = App.getNavigation(new ListDoctorPage());
+                        DbMyApp db = new DbMyApp();
+                        var result = db.insertLogin();
+                        if (result.Result > 0)
+                        {
+                            App.Current.MainPage = App.getNavigation(new ListDoctorPage());
+                        }
+                        else
+                        {
+                            //error al insertar
+                        }
                     }
                     else
                     {
-                        //error al insertar
+                        await App.Current.MainPage.DisplayAlert("Error", "Password vacio", "Ok");
                     }
                 }
                 else
                 {
-                    //logca para mandar error
+                    await App.Current.MainPage.DisplayAlert("Error", "Debes escribir un email válido", "Ok");
                 }
             }
             else
             {
-                //logca para mandar error
+                await App.Current.MainPage.DisplayAlert("Error", "Email vacio", "Ok");
             }
         }
     }

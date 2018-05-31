@@ -37,7 +37,7 @@
                             <StackLayout
                             VerticalOptions="CenterAndExpand">
                                 <abstractions:CircleImage
-                                Source="https://randomuser.me/api/portraits/women/34.jpg"/>
+                                Source="{Binding collectionDoctor.image}"/>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout 
@@ -47,7 +47,7 @@
                             VerticalTextAlignment="Center"
                             FontAttributes="Bold"
                             TextColor="#11434C"
-                            Text="Carlos Diaz"/>
+                            Text="{Binding collectionDoctor.name}"/>
                         </StackLayout>
                         <StackLayout 
                         Grid.Row="1"
@@ -55,7 +55,7 @@
                             <Label
                             VerticalTextAlignment="Center"
                             TextColor="#00DC4A"
-                            Text="ryankar90@hotmail.com"/>
+                            Text="{Binding collectionDoctor.email}"/>
                         </StackLayout>
                         <StackLayout 
                         Grid.Row="2"
@@ -84,7 +84,7 @@
                                 Source="star_icon.png"/>
                                 <Label
                                 TextColor="Black"
-                                Text="4.9"/>
+                                Text="{Binding collectionDoctor.ranking}"/>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
@@ -103,7 +103,7 @@
                         Text="Calle: "
                         TextColor="#15454E"/>
                         <Label
-                        Text="1861 colonia pomarrosa mexico df"
+                        Text="{Binding collectionDoctor.street}"
                         TextColor="#1B5863"/>
                     </StackLayout>
                     <StackLayout
@@ -112,7 +112,7 @@
                         Text="Ciudad: "
                         TextColor="#15454E"/>
                         <Label
-                        Text="baja california"
+                        Text="{Binding collectionDoctor.city}"
                         TextColor="#1B5863"/>
                     </StackLayout>
                     <StackLayout
@@ -121,7 +121,7 @@
                         Text="Estado: "
                         TextColor="#15454E"/>
                         <Label
-                        Text="Aguascalientes"
+                        Text="{Binding collectionDoctor.state}"
                         TextColor="#1B5863"/>
                     </StackLayout>
                     <StackLayout
@@ -130,7 +130,7 @@
                         Text="Código Postal: "
                         TextColor="#15454E"/>
                         <Label
-                        Text="29014"
+                        Text="{Binding collectionDoctor.postcode}"
                         TextColor="#1B5863"/>
                     </StackLayout>
                     <StackLayout
@@ -139,7 +139,7 @@
                         Text="Teléfono: "
                         TextColor="#15454E"/>
                         <Label
-                        Text="(961)-650-5473"
+                        Text="{Binding collectionDoctor.phone}"
                         TextColor="#1B5863"/>
                     </StackLayout>
                     <StackLayout
