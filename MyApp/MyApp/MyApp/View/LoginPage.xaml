@@ -1,10 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:renderer="clr-namespace:MyApp.renderer;assembly=MyApp"
              x:Class="MyApp.View.LoginPage"
              BackgroundImage="bg_login.png">
     <ContentPage.Content>
-        <Label
-            Text="hola mexico"></Label>
+        <StackLayout
+            VerticalOptions="Center">
+            <StackLayout
+                Margin="0,50,0,0"
+                HorizontalOptions="Center">
+                <Label
+                    Text="My App"
+                    FontSize="40"
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout
+                Margin="30,60,30,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="0">
+                        <Image
+                            Source="user_icon.png"
+                            HeightRequest="30"
+                            WidthRequest="30"/>
+                    </StackLayout>
+                    <renderer:CustomEntry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BorderWidth="3"
+                        CornerRadius="3"
+                        BorderColor="White"
+                        TextColor="White"
+                        Placeholder="Email Address"
+                        PlaceholderColor="Gray"
+                        Text="{Binding login.Email}"/>
+                    <StackLayout
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="1">
+                        <Image
+                            Source="password_icon.png"
+                            HeightRequest="30"
+                            WidthRequest="30"/>
+                    </StackLayout>
+                    <renderer:CustomEntry
+                        BorderWidth="3"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        CornerRadius="3"
+                        BorderColor="White"
+                        Placeholder="Password"
+                        IsPassword="True"
+                        TextColor="White"
+                        PlaceholderColor="Gray"
+                        Text="{Binding login.Password}"/>
+                </Grid>
+                <Button
+                    CornerRadius="20"
+                    Margin="0,30,0,0"
+                    TextColor="Transparent"
+                    Text="Login"
+                    BackgroundColor="White"
+                    Command="{Binding DoLogin}"/>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

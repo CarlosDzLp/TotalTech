@@ -12,7 +12,6 @@ namespace MyApp.DbContext
     public class DbMyApp
     {
         private readonly SQLiteConnection _connection;
-
         public DbMyApp()
         {
             try
@@ -20,7 +19,7 @@ namespace MyApp.DbContext
                 var path = DependencyService.Get<IGetPath>().getPath();
                 _connection = new SQLiteConnection(path,true);
                 _connection.CreateTable<LoginTable>();
-                _connection.CreateTable<Doctor>();
+                //_connection.CreateTable<Doctor>();
             }
             catch (Exception e)
             {
@@ -39,13 +38,15 @@ namespace MyApp.DbContext
 
         public async Task<int> DeleteLogin()
         {
-            LoginTable login = new LoginTable();
-            login.Isloguin = true;
-            return _connection.Delete(login);
+            //LoginTable login = new LoginTable();
+            //login.Isloguin = true;
+            //login.Id = 1;
+            return _connection.DeleteAll<LoginTable>();
         }
-        public async Task<int> getLogin()
+        public int getLogin()
         {
-            return _connection.Table<LoginTable>().Count();
+            var result = _connection.Table<LoginTable>().Count();
+            return result;
         }
     }
 }

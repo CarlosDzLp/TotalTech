@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:renderer="clr-namespace:MyApp.renderer;assembly=MyApp"
+             x:Class="MyApp.View.ListDoctorPage"
+             BackgroundColor="#F7F8F8"
+             Title="Lista doctores">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Cerra sesion"
+            Icon="dots_icon.png"
+            Priority="0"
+            Command="{Binding logOut}"
+            Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                CachingStrategy="RecycleElement"
+                Margin="0,20,0,0"
+                SeparatorColor="#F7F8F8"
+                x:Name="ListMen"
+                HasUnevenRows="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <renderer:ExtendedViewCell
+                            SelectedBackgroundColor="#F7F8F8">
+                            <StackLayout
+                                BackgroundColor="White"
+                                Margin="20,5"
+                                Padding="15,20">
+                                <Grid
+                                    ColumnSpacing="5"
+                                    RowSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3">
+                                        <StackLayout
+                                            VerticalOptions="CenterAndExpand">
+                                            <abstractions:CircleImage
+                                                Source="{Binding url}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout 
+                                        Grid.Row="0"
+                                        Grid.Column="1">
+                                        <Label
+                                            VerticalTextAlignment="Center"
+                                            FontAttributes="Bold"
+                                            TextColor="#11434C"
+                                            Text="{Binding nombre}"/>
+                                    </StackLayout>
+                                    <StackLayout 
+                                        Grid.Row="1"
+                                        Grid.Column="1">
+                                        <Label
+                                            VerticalTextAlignment="Center"
+                                            TextColor="#00DC4A"
+                                            Text="{Binding correo}"/>
+                                    </StackLayout>
+                                    <StackLayout 
+                                        Grid.Row="2"
+                                        Grid.Column="1">
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Image
+                                                WidthRequest="20"
+                                                HeightRequest="20"
+                                                Source="location_icon.png"/>
+                                            <Label
+                                                TextColor="Black"
+                                                Text="{Binding direccion}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="2">
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Image
+                                                WidthRequest="20"
+                                                HeightRequest="20"
+                                                Source="star_icon.png"/>
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                Text="{Binding estrella}"
+                                                TextColor="Black"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </renderer:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

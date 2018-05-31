@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace MyApp.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LoginPage : ContentPage
+	public partial class DetailDoctorPage : ContentPage
 	{
-		public LoginPage ()
+		public DetailDoctorPage ()
 		{
 			InitializeComponent ();
-		    this.BindingContext = new LoginPageViewModel();
+		    this.BindingContext = new DetailDoctorViewModel();
 		}
 	}
 }

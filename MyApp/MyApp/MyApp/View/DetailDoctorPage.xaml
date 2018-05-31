@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="MyApp.View.DetailDoctorPage"
+             Title="Detalle de contacto"
+             BackgroundColor="#FFFFFF">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Cerra sesion"
+            Icon="dots_icon.png"
+            Priority="0"
+            Command="{Binding Logout}"
+            Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+            Padding="30,30">
+                <StackLayout>
+                    <Grid
+                    ColumnSpacing="15"
+                    RowSpacing="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="3">
+                            <StackLayout
+                            VerticalOptions="CenterAndExpand">
+                                <abstractions:CircleImage
+                                Source="https://randomuser.me/api/portraits/women/34.jpg"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout 
+                        Grid.Row="0"
+                        Grid.Column="1">
+                            <Label
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#11434C"
+                            Text="Carlos Diaz"/>
+                        </StackLayout>
+                        <StackLayout 
+                        Grid.Row="1"
+                        Grid.Column="1">
+                            <Label
+                            VerticalTextAlignment="Center"
+                            TextColor="#00DC4A"
+                            Text="ryankar90@hotmail.com"/>
+                        </StackLayout>
+                        <StackLayout 
+                        Grid.Row="2"
+                        Grid.Column="1">
+                            <StackLayout
+                            Orientation="Horizontal">
+                                <Image
+                                WidthRequest="20"
+                                HeightRequest="20"
+                                Source="star_icon.png"/>
+                                <Image
+                                WidthRequest="20"
+                                HeightRequest="20"
+                                Source="star_icon.png"/>
+                                <Image
+                                WidthRequest="20"
+                                HeightRequest="20"
+                                Source="star_icon.png"/>
+                                <Image
+                                WidthRequest="20"
+                                HeightRequest="20"
+                                Source="star_icon.png"/>
+                                <Image
+                                WidthRequest="20"
+                                HeightRequest="20"
+                                Source="star_icon.png"/>
+                                <Label
+                                TextColor="Black"
+                                Text="4.9"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                Margin="0,20">
+                    <BoxView 
+                    Color="#1B5863"
+                    HeightRequest="1"/>
+                    <Label
+                    Text="Dirección:"
+                    TextColor="#00DC4A"/>
+                    <StackLayout
+                    Orientation="Horizontal">
+                        <Label
+                        Text="Calle: "
+                        TextColor="#15454E"/>
+                        <Label
+                        Text="1861 colonia pomarrosa mexico df"
+                        TextColor="#1B5863"/>
+                    </StackLayout>
+                    <StackLayout
+                    Orientation="Horizontal">
+                        <Label
+                        Text="Ciudad: "
+                        TextColor="#15454E"/>
+                        <Label
+                        Text="baja california"
+                        TextColor="#1B5863"/>
+                    </StackLayout>
+                    <StackLayout
+                    Orientation="Horizontal">
+                        <Label
+                        Text="Estado: "
+                        TextColor="#15454E"/>
+                        <Label
+                        Text="Aguascalientes"
+                        TextColor="#1B5863"/>
+                    </StackLayout>
+                    <StackLayout
+                    Orientation="Horizontal">
+                        <Label
+                        Text="Código Postal: "
+                        TextColor="#15454E"/>
+                        <Label
+                        Text="29014"
+                        TextColor="#1B5863"/>
+                    </StackLayout>
+                    <StackLayout
+                    Orientation="Horizontal">
+                        <Label
+                        Text="Teléfono: "
+                        TextColor="#15454E"/>
+                        <Label
+                        Text="(961)-650-5473"
+                        TextColor="#1B5863"/>
+                    </StackLayout>
+                    <StackLayout
+                    Margin="0,20"
+                    Orientation="Horizontal">
+                        <Image
+                        WidthRequest="20"
+                        HeightRequest="20"
+                        Source="location_icon.png"/>
+                        <Label
+                        Text="Ubicación"
+                        TextColor="#00DC4A"/>
+                    </StackLayout>
+                    <StackLayout
+                    BackgroundColor="Red"
+                    HeightRequest="200">
+
+                    </StackLayout>
+                    <Button
+                    Margin="0,20"
+                    CornerRadius="20"
+                    Text="Contactar"
+                    BackgroundColor="#00DC45"
+                    TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
