@@ -75,9 +75,6 @@ namespace MyApp.DbContext
 
         public async Task<int> DeleteLogin()
         {
-            //LoginTable login = new LoginTable();
-            //login.Isloguin = true;
-            //login.Id = 1;
             return _connection.DeleteAll<LoginTable>();
         }
         public int getLogin()
