@@ -15,43 +15,58 @@ namespace MyApp.ViewModel
         public Command DoLogin { get; set; }
         public LoginPageViewModel()
         {
-            login = new AppLogin();
-            login.Email = "@";
-            DoLogin = new Command(DoLoginoperation);         
+            try
+            {
+                login = new AppLogin();
+                DoLogin = new Command(DoLoginoperation);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }        
         }
 
         private async void DoLoginoperation()
         {
-            if (login.Email != null)
+            try
             {
-                if (validateEmail.EntryValidateEmail(login.Email))
+                if (login.Email != null)
                 {
-                    if (login.Password != null)
+                    if (validateEmail.EntryValidateEmail(login.Email))
                     {
-                        DbMyApp db = new DbMyApp();
-                        var result = db.insertLogin();
-                        if (result.Result > 0)
+                        if (login.Password != null)
                         {
-                            App.Current.MainPage = App.getNavigation(new ListDoctorPage());
+                            DbMyApp db = new DbMyApp();
+                            var result = db.insertLogin();
+                            if (result.Result > 0)
+                            {
+                                App.Current.MainPage = App.getNavigation(new ListDoctorPage());
+                            }
+                            else
+                            {
+                                //error al insertar
+                            }
                         }
                         else
                         {
-                            //error al insertar
+                            await App.Current.MainPage.DisplayAlert("Error", "Password vacio", "Ok");
                         }
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Password vacio", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Error", "Debes escribir un email válido", "Ok");
                     }
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "Debes escribir un email válido", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Error", "Email vacio", "Ok");
                 }
             }
-            else
+            catch (Exception e)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Email vacio", "Ok");
+                Console.WriteLine(e);
+                throw;
             }
         }
     }

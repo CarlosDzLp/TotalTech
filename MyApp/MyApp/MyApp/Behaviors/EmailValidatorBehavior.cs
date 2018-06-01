@@ -12,21 +12,45 @@ namespace MyApp.Behaviors
  
         protected override void OnAttachedTo(Entry entry)
         {
-            entry.TextChanged += TextChanged;
-            base.OnAttachedTo(entry);
+            try
+            {
+                entry.TextChanged += TextChanged;
+                base.OnAttachedTo(entry);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
  
         // Valida si el texto introducido es un correo electrónico
         void TextChanged(object sender, TextChangedEventArgs e)
         {
-            bool valido = (Regex.IsMatch(e.NewTextValue, emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-            ((Entry)sender).TextColor = valido ? Color.Green : Color.Red;
+            try
+            {
+                bool valido = (Regex.IsMatch(e.NewTextValue, emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+                ((Entry)sender).TextColor = valido ? Color.Green : Color.Red;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
  
         protected override void OnDetachingFrom(Entry entry)
         {
-            entry.TextChanged -= TextChanged;
-            base.OnDetachingFrom(entry);
+            try
+            {
+                entry.TextChanged -= TextChanged;
+                base.OnDetachingFrom(entry);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

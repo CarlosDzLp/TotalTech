@@ -31,30 +31,62 @@ namespace MyApp.ViewModel
 
         public ListDoctorPageViewModel()
         {
-            db = new DbMyApp();
-            logOut = new Command(DoLogOut);
-            Itemselected = new Command(ItemSelectedClick);
-            getAllDoctor();
+            try
+            {
+                db = new DbMyApp();
+                logOut = new Command(DoLogOut);
+                Itemselected = new Command(ItemSelectedClick);
+                getAllDoctor();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         
         private void ItemSelectedClick()
         {
-            
-            App.Current.MainPage.Navigation.PushAsync(new DetailDoctorPage(ItemCollection));
+            try
+            {
+                App.Current.MainPage.Navigation.PushAsync(new DetailDoctorPage(ItemCollection));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         private async void DoLogOut()
         {
-            DbMyApp db = new DbMyApp();
-            var result = await db.DeleteLogin();
-            App.Current.MainPage = new LoginPage();
+            try
+            {
+
+                DbMyApp db = new DbMyApp();
+                var result = await db.DeleteLogin();
+                App.Current.MainPage = new LoginPage();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         private async void getAllDoctor()
         {
-            var result = await db.GetAlldoctor();
-            collectiondoctor = result.ToList();
+            try
+            {
+                var result = await db.GetAlldoctor();
+                collectiondoctor = result.ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

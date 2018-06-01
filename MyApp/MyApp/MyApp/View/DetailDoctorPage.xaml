@@ -83,6 +83,7 @@
                                 HeightRequest="20"
                                 Source="star_icon.png"/>
                                 <Label
+                                    VerticalTextAlignment="Center"
                                 TextColor="Black"
                                 Text="{Binding collectionDoctor.ranking}"/>
                             </StackLayout>
@@ -153,18 +154,21 @@
                         Text="Ubicación"
                         TextColor="#00DC4A"/>
                     </StackLayout>
-                    <StackLayout
-                    BackgroundColor="Red"
-                    HeightRequest="200">
-
-                    </StackLayout>
-                    <Button
+                    
+                </StackLayout>
+                <StackLayout
+                    HeightRequest="300">
+                    <WebView
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Source="{Binding collectionDoctor.streetFromat}"/>
+                </StackLayout>
+                <Button
                     Margin="0,20"
                     CornerRadius="20"
                     Text="Contactar"
                     BackgroundColor="#00DC45"
                     TextColor="White"/>
-                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

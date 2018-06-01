@@ -16,6 +16,7 @@ namespace MyApp.Model
         private string _email;
         private string _name;
         private string _image;
+        private string _streerFormat;
         public string ranking
         {
             get { return _ranking; }
@@ -68,6 +69,12 @@ namespace MyApp.Model
         {
             get { return _image; }
             set { SetValue(ref _image, value); }
+        }
+
+        public string streetFromat
+        {
+            get { return _streerFormat; }
+            set { SetValue(ref _streerFormat, value); }
         }
     }
 }

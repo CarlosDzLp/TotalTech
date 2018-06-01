@@ -8,16 +8,23 @@ namespace MyApp.Helper
     {
         public static float getRanking()
         {
-            int increment = 0, sumar = 0;
-            Random rm = new Random();
-            for (int i = 0; i < 10; i++)
+            try
             {
-                increment = rm.Next(0, 10);
-                sumar += increment;
+                int increment = 0, sumar = 0;
+                Random rm = new Random();
+                for (int i = 0; i < 10; i++)
+                {
+                    increment = rm.Next(0, 10);
+                    sumar += increment;
+                }
+                var result = (float)sumar / 10;
+                return result;
             }
-
-            var result = (float)sumar / 10;
-            return result;
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

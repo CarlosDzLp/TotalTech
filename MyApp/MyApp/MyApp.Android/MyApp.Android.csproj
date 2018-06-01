@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Helper\FilePath.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MainApplication.cs" />
     <Compile Include="renderer\CustomEntryRenderer.cs" />
     <Compile Include="renderer\ExtendedViewCellRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -102,9 +103,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable-xxxhdpi\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MyApp\MyApp.csproj">
       <Project>{26475A6D-1502-420D-B608-989CB7FBDAAE}</Project>
@@ -146,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -33,54 +33,102 @@ namespace MyApp.DbContext
 
         public void Insertdoctor(Doctor doctor)
         {
-            _connection.Insert(doctor);
+            try
+            {
+                _connection.Insert(doctor);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public async Task<int> Getcountdoctor()
         {
-            var result = _connection.Table<Doctor>().Count();
-            return result;
+            try
+            {
+                var result = _connection.Table<Doctor>().Count();
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public async Task<IList<CollectionDoctor>> GetAlldoctor()
         {
-            List<CollectionDoctor> doctor = new List<CollectionDoctor>();
-            var result = _connection.Table<Doctor>().ToList();
-            foreach (var item in result)
+            try
             {
-                doctor.Add(new CollectionDoctor
+                List<CollectionDoctor> doctor = new List<CollectionDoctor>();
+                var result = _connection.Table<Doctor>().ToList();
+                foreach (var item in result)
                 {
-                    ranking = item.ranking,
-                    street = item.street,
-                    state = item.state,
-                    city = item.city,
-                    postcode = item.postcode.ToString(),
-                    phone = item.phone,
-                    email = item.email,
-                    name = item.name,
-                    image = item.image
-                });
-            }
+                    doctor.Add(new CollectionDoctor
+                    {
+                        ranking = item.ranking,
+                        street = item.street,
+                        state = item.state,
+                        city = item.city,
+                        postcode = item.postcode.ToString(),
+                        phone = item.phone,
+                        email = item.email,
+                        name = item.name,
+                        image = item.image
+                    });
+                }
             
-            return doctor;
+                return doctor;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
         public async Task<int> insertLogin()
         {
-            LoginTable login = new LoginTable();
-            login.Isloguin = true;
-            login.Id = 1;
-            var result = _connection.Insert(login);
-            return result;
+            try
+            {
+                LoginTable login = new LoginTable();
+                login.Isloguin = true;
+                login.Id = 1;
+                var result = _connection.Insert(login);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public async Task<int> DeleteLogin()
         {
-            return _connection.DeleteAll<LoginTable>();
+            try
+            {
+                return _connection.DeleteAll<LoginTable>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
         public int getLogin()
         {
-            var result = _connection.Table<LoginTable>().Count();
-            return result;
+            try
+            {
+                var result = _connection.Table<LoginTable>().Count();
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

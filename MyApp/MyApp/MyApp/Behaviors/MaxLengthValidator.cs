@@ -18,47 +18,79 @@ namespace MyApp.Behaviors
  
         protected override void OnAttachedTo(CustomEntry entry)
         {
-            entry.TextChanged += TextChanged;
-            base.OnAttachedTo(entry);
+            try
+            {
+                entry.TextChanged += TextChanged;
+                base.OnAttachedTo(entry);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
         // Devuelve una cadena de máximo una longitud permitida
         private void Unfocused(object sender, FocusEventArgs e)
         {
-            CustomEntry entry = (CustomEntry)sender;
-            if (string.IsNullOrEmpty(entry.Text))
+            try
             {
+                CustomEntry entry = (CustomEntry)sender;
+                if (string.IsNullOrEmpty(entry.Text))
+                {
                 
+                }
+                else
+                {
+                    entry.Text = entry.Text.Substring(0, MaxLength);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                entry.Text = entry.Text.Substring(0, MaxLength);
+                Console.WriteLine(exception);
+                throw;
             }
             
         }
         void TextChanged(object sender, TextChangedEventArgs e)
         {
-            CustomEntry entry = (CustomEntry)sender;
-            if (string.IsNullOrEmpty(entry.Text))
+            try
             {
-                
-            }
-            else
-            {
-                var length = entry.Text.Length;
-                if (length >=MaxLength)
+                CustomEntry entry = (CustomEntry)sender;
+                if (string.IsNullOrEmpty(entry.Text))
                 {
-                    entry.Text = entry.Text.Substring(0, MaxLength);
+                
                 }
                 else
                 {
-                }
+                    var length = entry.Text.Length;
+                    if (length >=MaxLength)
+                    {
+                        entry.Text = entry.Text.Substring(0, MaxLength);
+                    }
+                    else
+                    {
+                    }
                 
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
             }
         }
         protected override void OnDetachingFrom(CustomEntry entry)
         {
-            entry.TextChanged -= TextChanged;
-            base.OnDetachingFrom(entry);
+            try
+            {
+                entry.TextChanged -= TextChanged;
+                base.OnDetachingFrom(entry);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
