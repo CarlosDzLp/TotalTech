@@ -29,6 +29,7 @@ namespace MyApp
 	            else
 	            {
 	                MainPage = new LoginPage();
+                    //hola mexico nuevo
 	            }
 	        }
 	        catch (Exception e)
