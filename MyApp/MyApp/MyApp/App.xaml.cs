@@ -1,3 +1,4 @@
+
 using System;
 using System.Threading.Tasks;
 using MyApp.DbContext;
@@ -12,6 +13,7 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace MyApp
 {
+    //otro comemntario aqui
 	public partial class App : Application
 	{
 	    DbMyApp db = new DbMyApp();
